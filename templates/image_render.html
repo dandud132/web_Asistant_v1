@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendering Dynamic Images Using Flask</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 20px; /* Center the form horizontally */
+            max-width: 500px; /* Limit form width */
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: center; /* Center images horizontally */
+            align-items: center; /* Vertically align images (if needed) */
+        }
+
+        .image-container img {
+            max-width: 400px;
+            max-height: 300px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .image-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            text-align: center; /* Center labels above images */
+        }
+
+        .image-wrapper {
+            text-align: center; /* Center image and label together */
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+        <label for="img">Выберите изображение:</label>
+        <input id="img" name="img" type="file"/>
+        <input type="submit" value="Загрузить"/>
+    </form>
+
+
+
+    {% if img %}
+    <form action="/search" method="post">
+    <button type="submit">найти</button>
+  </form>
+    <div class="image-container">
+        <div class="image-wrapper">
+            <span class="image-label">До:</span>
+        <img src="{{img}}">
+            <span class="image-label">После:</span>
+        <img src="{{img1}}">
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+</html>

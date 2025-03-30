@@ -1,0 +1,2 @@
+static\uploads\66_yolo.jpg
+static\uploads\66_data.txt
